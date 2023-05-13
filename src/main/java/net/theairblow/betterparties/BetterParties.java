@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 public class BetterParties {
     public static final String MOD_ID = "betterparties";
     public static final String MOD_NAME = "BetterParties";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.1.0";
     public static Logger LOGGER;
 
     @Mod.EventHandler

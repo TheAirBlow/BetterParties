@@ -21,6 +21,7 @@ public class MainHandler {
         UUID uuid = QuestingAPI.getQuestingUUID(player);
         if (player.ticksExisted%200 != 0) return; // Do it every 10 seconds
         DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
+        if (partyEntry == null) return; // Player doesn't have a party
         List<DBEntry<IQuest>> quests = QuestDatabase.INSTANCE.getEntries();
         List<Integer> toComplete = new ArrayList<>();
         for (UUID memID : partyEntry.getValue().getMembers()) {

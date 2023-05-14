@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.HashMap;
 import java.util.UUID;
 
-@Mixin(QuestInstance.class)
+@Mixin(value = QuestInstance.class, remap = false)
 public class MixinQuestInstance {
     @Shadow
     private HashMap<UUID, NBTTagCompound> completeUsers;

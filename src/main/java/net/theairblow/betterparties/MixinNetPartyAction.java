@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Mixin(NetPartyAction.class)
+@Mixin(value = NetPartyAction.class, remap = false)
 public class MixinNetPartyAction {
     @Inject(method = "acceptInvite", at = @At(value = "INVOKE", target = "Lbetterquesting/network/handlers/NetNameSync;quickSync"))
     public void acceptInvite(int partyID, EntityPlayerMP sender, CallbackInfo ci) {

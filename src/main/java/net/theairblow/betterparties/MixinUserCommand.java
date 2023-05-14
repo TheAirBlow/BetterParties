@@ -2,7 +2,6 @@ package net.theairblow.betterparties;
 
 import betterquesting.commands.BQ_CommandUser;
 import betterquesting.commands.QuestCommandBase;
-import jdk.tools.jmod.Main;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(BQ_CommandUser.class)
+@Mixin(value = BQ_CommandUser.class, remap = false)
 public class MixinUserCommand {
     @Shadow
     private List<QuestCommandBase> coms;

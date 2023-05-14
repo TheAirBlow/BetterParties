@@ -1,0 +1,13 @@
+{
+  "minVersion": "0.8.2",
+  "compatibilityLevel": "JAVA_8",
+  "package": "net.theairblow.betterparties",
+  "refmap": "mixin.refmap.json",
+  "mixins": [
+    "MixinUserCommand",
+    "MixinQuestInstance",
+    "MixinNetPartyAction"
+  ],
+  "client": [],
+  "server": []
+}

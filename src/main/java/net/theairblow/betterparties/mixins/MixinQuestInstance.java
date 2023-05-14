@@ -24,14 +24,13 @@ import java.util.UUID;
 
 @Mixin(value = QuestInstance.class, remap = false)
 public class MixinQuestInstance {
-    @Shadow
-    private HashMap<UUID, NBTTagCompound> completeUsers;
-
     @Inject(method = "setComplete", at = @At("TAIL"))
     public void setComplete(UUID uuid, long timestamp, CallbackInfo ci) {
         if (!MainConfig.sharedCompletion) return;
         QuestInstance instance = (QuestInstance)(Object)this;
         int questID = QuestDatabase.INSTANCE.getID(instance);
+        QuestInstanceAccessor accessor = (QuestInstanceAccessor)instance;
+        HashMap<UUID, NBTTagCompound> completeUsers = accessor.getCompleteUsers();
         synchronized(completeUsers) {
             DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
             if (partyEntry != null) { // Player has a party
@@ -56,6 +55,8 @@ public class MixinQuestInstance {
         QuestInstance instance = (QuestInstance)(Object)this;
         int questID = QuestDatabase.INSTANCE.getID(instance);
         UUID uuid = QuestingAPI.getQuestingUUID(player);
+        QuestInstanceAccessor accessor = (QuestInstanceAccessor)instance;
+        HashMap<UUID, NBTTagCompound> completeUsers = accessor.getCompleteUsers();
         synchronized(completeUsers) {
             DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
             if (partyEntry != null) { // Player has a party

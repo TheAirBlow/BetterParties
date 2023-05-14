@@ -1,4 +1,4 @@
-package net.theairblow.betterparties;
+package net.theairblow.betterparties.mixins;
 
 import betterquesting.api.api.QuestingAPI;
 import betterquesting.api.questing.party.IParty;
@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.theairblow.betterparties.MainConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.HashMap;
 import java.util.UUID;
 
-@Mixin(QuestInstance.class)
+@Mixin(value = QuestInstance.class, remap = false)
 public interface QuestInstanceAccessor {
     @Accessor("completeUsers")
     HashMap<UUID, NBTTagCompound> getCompleteUsers();

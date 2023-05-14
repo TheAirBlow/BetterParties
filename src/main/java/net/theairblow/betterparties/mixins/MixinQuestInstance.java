@@ -29,22 +29,18 @@ public class MixinQuestInstance {
         if (!MainConfig.sharedCompletion) return;
         QuestInstance instance = (QuestInstance)(Object)this;
         int questID = QuestDatabase.INSTANCE.getID(instance);
-        QuestInstanceAccessor accessor = (QuestInstanceAccessor)instance;
-        HashMap<UUID, NBTTagCompound> completeUsers = accessor.getCompleteUsers();
-        synchronized(completeUsers) {
-            DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
-            if (partyEntry != null) { // Player has a party
-                for (UUID memID : partyEntry.getValue().getMembers()) {
-                    NBTTagCompound entry = instance.getCompletionInfo(memID);
-                    if(entry != null) continue; // Already complete
-                    entry = new NBTTagCompound();
-                    entry.setBoolean("claimed", false);
-                    entry.setLong("timestamp", timestamp);
-                    completeUsers.put(memID, entry);
-                    EntityPlayerMP player2 = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(memID);
-                    QuestCache qc2 = player2.getCapability(CapabilityProviderQuestCache.CAP_QUEST_CACHE, null);
-                    if(qc2 != null) qc2.markQuestDirty(questID);
-                }
+        DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
+        if (partyEntry != null) { // Player has a party
+            for (UUID memID : partyEntry.getValue().getMembers()) {
+                NBTTagCompound entry = instance.getCompletionInfo(memID);
+                if (entry != null) continue; // Already complete
+                entry = new NBTTagCompound();
+                entry.setBoolean("claimed", false);
+                entry.setLong("timestamp", timestamp);
+                instance.setCompletionInfo(memID, entry);
+                EntityPlayerMP player2 = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(memID);
+                QuestCache qc2 = player2.getCapability(CapabilityProviderQuestCache.CAP_QUEST_CACHE, null);
+                if(qc2 != null) qc2.markQuestDirty(questID);
             }
         }
     }
@@ -55,22 +51,18 @@ public class MixinQuestInstance {
         QuestInstance instance = (QuestInstance)(Object)this;
         int questID = QuestDatabase.INSTANCE.getID(instance);
         UUID uuid = QuestingAPI.getQuestingUUID(player);
-        QuestInstanceAccessor accessor = (QuestInstanceAccessor)instance;
-        HashMap<UUID, NBTTagCompound> completeUsers = accessor.getCompleteUsers();
-        synchronized(completeUsers) {
-            DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
-            if (partyEntry != null) { // Player has a party
-                for (UUID memID : partyEntry.getValue().getMembers()) {
-                    NBTTagCompound entry = instance.getCompletionInfo(memID);
-                    if(entry != null) continue; // Already complete
-                    entry = new NBTTagCompound();
-                    entry.setBoolean("claimed", true);
-                    entry.setLong("timestamp", System.currentTimeMillis());
-                    completeUsers.put(memID, entry);
-                    EntityPlayerMP player2 = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(memID);
-                    QuestCache qc2 = player2.getCapability(CapabilityProviderQuestCache.CAP_QUEST_CACHE, null);
-                    if(qc2 != null) qc2.markQuestDirty(questID);
-                }
+        DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);
+        if (partyEntry != null) { // Player has a party
+            for (UUID memID : partyEntry.getValue().getMembers()) {
+                NBTTagCompound entry = instance.getCompletionInfo(memID);
+                if (entry != null) continue; // Already complete
+                entry = new NBTTagCompound();
+                entry.setBoolean("claimed", true);
+                entry.setLong("timestamp", System.currentTimeMillis());
+                instance.setCompletionInfo(memID, entry);
+                EntityPlayerMP player2 = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(memID);
+                QuestCache qc2 = player2.getCapability(CapabilityProviderQuestCache.CAP_QUEST_CACHE, null);
+                if(qc2 != null) qc2.markQuestDirty(questID);
             }
         }
     }

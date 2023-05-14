@@ -5,11 +5,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = BetterParties.MOD_ID, name = BetterParties.MOD_NAME, version = BetterParties.VERSION)
+@Mod(modid = BetterParties.MOD_ID, name = BetterParties.MOD_NAME, version = BetterParties.VERSION,
+        serverSideOnly = true, acceptableRemoteVersions = "*")
 public class BetterParties {
     public static final String MOD_ID = "betterparties";
     public static final String MOD_NAME = "BetterParties";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.2.0";
     public static Logger LOGGER;
 
     @Mod.EventHandler

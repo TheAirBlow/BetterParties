@@ -26,7 +26,7 @@ import java.util.UUID;
 public class MixinQuestInstance {
     @Inject(method = "setComplete", at = @At("TAIL"))
     public void setComplete(UUID uuid, long timestamp, CallbackInfo ci) {
-        if (!MainConfig.sharedCompletion) return;
+        if (!MainConfig.sharedCompletion || uuid == null) return;
         QuestInstance instance = (QuestInstance)(Object)this;
         int questID = QuestDatabase.INSTANCE.getID(instance);
         DBEntry<IParty> partyEntry = PartyManager.INSTANCE.getParty(uuid);

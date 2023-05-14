@@ -3,7 +3,7 @@ Forces quest completion synchronization between BQ party members.
 
 ## Configuration
 There are 3 total configuration options:
-1) Sync Command - adds `/bq_user sync` to forcefully sync quests with all members
+1) Sync Command - adds `/party_sync` to forcefully sync quests with all members
 2) Shared Completion - quest completion is shared between team members
 3) Shared Rewards - once any team member claimed a reward, it is claimed for others
 4) Sync On Join - synchronizes quests with team members on player joining to a party

@@ -4,7 +4,6 @@
   "package": "net.theairblow.betterparties.mixins",
   "refmap": "mixin.refmap.json",
   "mixins": [
-    "MixinUserCommand",
     "MixinQuestInstance",
     "MixinNetPartyAction"
   ],

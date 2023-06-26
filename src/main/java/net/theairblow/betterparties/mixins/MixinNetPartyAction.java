@@ -22,7 +22,7 @@ import java.util.UUID;
 @Mixin(value = NetPartyAction.class, remap = false)
 public class MixinNetPartyAction {
     @Inject(method = "acceptInvite", at = @At(value = "INVOKE", target = "Lbetterquesting/network/handlers/NetNameSync;quickSync"))
-    public void acceptInvite(int partyID, EntityPlayerMP sender, CallbackInfo ci) {
+    private static void acceptInvite(int partyID, EntityPlayerMP sender, CallbackInfo ci) {
         if (MainConfig.syncOnJoin) {
             UUID uuid = QuestingAPI.getQuestingUUID(sender);
             DBEntry<IParty> party = PartyManager.INSTANCE.getParty(uuid);

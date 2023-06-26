@@ -11,11 +11,11 @@ import java.util.Arrays;
 import java.util.List;
 
 @Mod(modid = BetterParties.MOD_ID, name = BetterParties.MOD_NAME, version = BetterParties.VERSION,
-        serverSideOnly = true, acceptableRemoteVersions = "*")
+        acceptableRemoteVersions = "*" /* Do not require on client, but allow it for singleplayer */)
 public class BetterParties implements ILateMixinLoader {
     public static final String MOD_ID = "betterparties";
     public static final String MOD_NAME = "BetterParties";
-    public static final String VERSION = "1.3.0";
+    public static final String VERSION = "1.3.1";
     public static Logger LOGGER;
 
     @Mod.EventHandler

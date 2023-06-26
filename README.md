@@ -1,8 +1,9 @@
 # BetterParties
-Forces quest completion synchronization between BQ party members.
+Forces quest completion synchronization between BQ party members. \
+This mod depends on [MixinBooter](https://www.curseforge.com/minecraft/mc-mods/mixin-booter) and BQ or BQu.
 
 ## Configuration
-There are 3 total configuration options:
+There are 4 total configuration options:
 1) Sync Command - adds `/party_sync` to forcefully sync quests with all members
 2) Shared Completion - quest completion is shared between team members
 3) Shared Rewards - once any team member claimed a reward, it is claimed for others

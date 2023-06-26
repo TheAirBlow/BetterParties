@@ -10,5 +10,4 @@ There are 3 total configuration options:
 
 ## Any issues?
 If there any issues like de-sync, use `/bq_user sync` to forcefully sync quests with all members. \
-**Keep in mind that this command only does it for you, not for other members!** \
-For support, join Threefold's [discord](https://discord.gg/7FUfvnRn) and [open this thread](https://discord.com/channels/889188946934923325/1106973556505595944).
+**Keep in mind that this command only does it for you, not for other members!**

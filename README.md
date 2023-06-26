@@ -10,5 +10,5 @@ There are 4 total configuration options:
 4) Sync On Join - synchronizes quests with team members on player joining to a party
 
 ## Any issues?
-If there any issues like de-sync, use `/bq_user sync` to forcefully sync quests with all members. \
+If there any issues like de-sync, use `/party_sync` to forcefully sync quests with all members. \
 **Keep in mind that this command only does it for you, not for other members!**
